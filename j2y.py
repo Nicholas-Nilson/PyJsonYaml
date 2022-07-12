@@ -1,11 +1,10 @@
 import yaml, json
 
-def JSON_to_Yaml(file_name):
-    with open(file_name+'.yaml', 'r') as file:
-        configuration = yaml.safe_load(file_name)
+def json_to_yaml(file_name):
+    with open(file_name+'.json', 'r') as json_in, open(file_name+'.yaml', 'w') as yaml_out:
+        json_payload = json.load(json_in)
+        yaml.dump(json_payload, sort_keys=False)
 
-    with open(file_name+'.json', 'w') as json_file:
-        json.dump(configuration, json_file)
 
-# JSON_to_Yaml('verify')
-JSON_to_Yaml('xmas')
+# json_to_yaml('donuts')
+json_to_yaml('emojis')
